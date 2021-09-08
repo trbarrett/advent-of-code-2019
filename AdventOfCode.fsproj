@@ -7,7 +7,7 @@
 
     <ItemGroup>
         <None Include="Helper.fsx" />
-        <None Include="Day1Part1.fsx" />
+        <None Include="Day1.fsx" />
     </ItemGroup>
 
 </Project>
