@@ -33,3 +33,7 @@ module Map =
     let flattenOneToMany m =
         let flatten = (fun (KeyValue(x, ys)) -> ys |> Seq.map (mkTuple x))
         Seq.collect flatten m
+
+module String =
+    let split (delimiter : char) (input : string) =
+        input.Split delimiter
