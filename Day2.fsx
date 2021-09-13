@@ -2,8 +2,6 @@
 
 open Helper
 
-let floor: float -> float = System.Math.Floor
-
 let startingMem =
     Helper.readInput "day2.txt"
     |> Seq.item 0
@@ -63,12 +61,12 @@ let findVariables mem target =
     let possibilities =
         seq { for noun in 1..limit do
                   for verb in 1..limit do
-                      yield noun,verb }
+                      noun,verb }
     let (noun, verb) =
         possibilities
         |> Seq.find (fun (noun, verb) ->
             let calcResult = runCalc mem noun verb
-            printfn $"CalcResult {calcResult.[0]} for inputs {(noun, verb)}"
+            //printfn $"CalcResult {calcResult.[0]} for inputs {(noun, verb)}"
             target = calcResult.[0])
 
     (100 * noun) + verb
