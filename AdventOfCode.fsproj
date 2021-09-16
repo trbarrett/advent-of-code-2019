@@ -10,6 +10,7 @@
         <None Include="Day1.fsx" />
         <None Include="Day2.fsx" />
         <None Include="Day3.fsx" />
+        <None Include="Day4.fsx" />
     </ItemGroup>
 
 </Project>
