@@ -34,6 +34,13 @@ module Map =
         let flatten = (fun (KeyValue(x, ys)) -> ys |> Seq.map (mkTuple x))
         Seq.collect flatten m
 
+module Seq =
+    let groupByTuple (xs : ('a * 'b) seq) =
+        xs
+        |> Seq.groupBy fst
+        |> Seq.map (fun (k,v) -> k, v |> Seq.map snd)
+        |> Map
+
 module String =
     let split (delimiter : char) (input : string) =
         input.Split delimiter
