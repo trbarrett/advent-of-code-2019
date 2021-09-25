@@ -13,6 +13,11 @@ let public readInput inputName =
     sprintf "%s/inputdata/%s" __SOURCE_DIRECTORY__ inputName
     |> File.ReadLines
 
+let public readUncommentedLines inputName =
+    sprintf "%s/inputdata/%s" __SOURCE_DIRECTORY__ inputName
+    |> File.ReadLines
+    |> Seq.filter (fun (str : System.String) -> not (str.StartsWith('#')))
+
 let (|KeyValue|) (keyValuePair : KeyValuePair<'k, 'v>) : 'k * 'v =
     let k = keyValuePair.Key
     let v = keyValuePair.Value
@@ -33,6 +38,22 @@ module Map =
     let flattenOneToMany m =
         let flatten = (fun (KeyValue(x, ys)) -> ys |> Seq.map (mkTuple x))
         Seq.collect flatten m
+
+module List =
+    let permutationsWithReplacement (values : 'a list) times =
+        let splitValues = values |> List.map List.singleton
+        let folder acc values =
+            List.allPairs acc values
+            |> List.map (fun (xs, x) -> x::xs)
+        List.fold folder splitValues (List.replicate (times - 1) values)
+
+    let rec permutations (values : Set<'a>) count : 'a list list =
+        if count = 0 then [[]]
+        else
+            values |> List.ofSeq
+            |> List.collect (fun x ->
+               permutations (Set.remove x values) (count - 1)
+               |> List.map (fun xs -> x::xs))
 
 module Seq =
     let groupByTuple (xs : ('a * 'b) seq) =
