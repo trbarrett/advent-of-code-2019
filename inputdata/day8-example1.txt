@@ -1,0 +1,2 @@
+123456789012
+# 3 pixels wide and 2 pixels tall
