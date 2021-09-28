@@ -8,7 +8,7 @@ open Helper
 open System
 
 let startingMem =
-    Helper.readInput "day5.txt"
+    Helper.readInput "day05.txt"
     |> Seq.item 0
     |> String.split ','
 

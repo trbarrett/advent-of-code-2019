@@ -162,6 +162,7 @@ module IntCodeComputer =
         printf $"{p.Pos}: {evalArguments}\n\t"
 
     let rec execute (p : RunningProgram) =
+        // TODO - We could make this extract the actual values
         let opCode = Opcode.parse p.Mem.[p.Pos]
         //printCurrInstructionDebug p opCode
         match opCode with
@@ -255,27 +256,10 @@ module IntCodeComputer =
         let output, p = executeUntilHalt' p []
         List.rev output, p
 
-    let runProgramFromState prog input =
-       match prog with
-       | Running p ->
-           match input with
-           | Some input -> p.Input.Enqueue input
-           | None -> ()
-
-           execute p
-       | SuspendedWaitingInput p ->
-           match input with
-           | Some input -> p.Input.Enqueue input
-           | None -> failwith "No input for program expecting input"
-
-           execute p
-       | Terminated ->
-           Terminate
-
 open IntCodeComputer
 
 let programCode =
-    Helper.readUncommentedLines "day9.txt"
+    Helper.readUncommentedLines "day09.txt"
     |> Seq.item 0
     |> String.split ','
 

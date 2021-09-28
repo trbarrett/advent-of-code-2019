@@ -16,7 +16,7 @@ open System
 type OrbitMap = Map<string, seq<string>>
 
 let orbitMap =
-    Helper.readInput "day6.txt"
+    Helper.readInput "day06.txt"
     |> Seq.map (String.split ')')
     |> Seq.map (fun xs -> xs.[0], xs.[1])
     |> Seq.groupByTuple

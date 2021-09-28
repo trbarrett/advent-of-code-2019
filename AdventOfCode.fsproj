@@ -7,15 +7,15 @@
 
     <ItemGroup>
         <None Include="Helper.fsx" />
-        <None Include="Day1.fsx" />
-        <None Include="Day2.fsx" />
-        <None Include="Day3.fsx" />
-        <None Include="Day4.fsx" />
-        <None Include="Day5.fsx" />
-        <None Include="Day6.fsx" />
-        <None Include="Day7.fsx" />
-        <None Include="Day8.fsx" />
-        <None Include="Day9.fsx" />
+        <None Include="Day01.fsx" />
+        <None Include="Day02.fsx" />
+        <None Include="Day03.fsx" />
+        <None Include="Day04.fsx" />
+        <None Include="Day05.fsx" />
+        <None Include="Day06.fsx" />
+        <None Include="Day07.fsx" />
+        <None Include="Day08.fsx" />
+        <None Include="Day09.fsx" />
     </ItemGroup>
 
 </Project>

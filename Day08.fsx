@@ -64,7 +64,7 @@ let part2 input ((width, height) as size) =
     // Correct Answer: "PCULA"
 
 let input =
-    Helper.readUncommentedLines "day8.txt"
+    Helper.readUncommentedLines "day08.txt"
     |> Seq.item 0
     |> Seq.map (fun ch -> ch |> string |> int)
 

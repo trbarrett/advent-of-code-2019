@@ -3,7 +3,7 @@
 open Helper
 
 let startingMem =
-    Helper.readInput "day2.txt"
+    Helper.readInput "day02.txt"
     |> Seq.item 0
     |> String.split ','
     |> Array.map int

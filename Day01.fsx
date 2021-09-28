@@ -1,6 +1,6 @@
 #load "./Helper.fsx"
 
-let numbers = Helper.readInput "day1.txt" |> Seq.map int |> Set
+let numbers = Helper.readInput "day01.txt" |> Seq.map int |> Set
 
 let rec extraFuelCalc fuel acc =
     if fuel <= 0

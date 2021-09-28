@@ -111,7 +111,7 @@ let findEarliestCrossingPoint wireA wireB =
 
 let sw = System.Diagnostics.Stopwatch.StartNew ()
 let wireA, wireB =
-    Helper.readInput "day3.txt"
+    Helper.readInput "day03.txt"
     |> Seq.map (String.split ',')
     |> Seq.map (Seq.map PathVector.parse)
     |> Seq.map vectorsToSegments
