@@ -261,7 +261,7 @@ let runFeedbackAmpHookup program phaseSettings =
     runSeriesWithFeedback preparedPrograms (Some 0)
 
 let programCode =
-    Helper.readUncommentedLines "day07.txt"
+    Helper.readLinesWithHashComments "day07.txt"
     |> Seq.item 0
     |> String.split ','
 

@@ -13,10 +13,15 @@ let public readInput inputName =
     sprintf "%s/inputdata/%s" __SOURCE_DIRECTORY__ inputName
     |> File.ReadLines
 
-let public readUncommentedLines inputName =
+let public readLinesWithHashComments inputName =
     sprintf "%s/inputdata/%s" __SOURCE_DIRECTORY__ inputName
     |> File.ReadLines
     |> Seq.filter (fun (str : System.String) -> not (str.StartsWith('#')))
+
+let public readLinesWithSlashComments inputName =
+    sprintf "%s/inputdata/%s" __SOURCE_DIRECTORY__ inputName
+    |> File.ReadLines
+    |> Seq.filter (fun (str : System.String) -> not (str.StartsWith("//")))
 
 let (|KeyValue|) (keyValuePair : KeyValuePair<'k, 'v>) : 'k * 'v =
     let k = keyValuePair.Key

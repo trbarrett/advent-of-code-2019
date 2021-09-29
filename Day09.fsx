@@ -259,7 +259,7 @@ module IntCodeComputer =
 open IntCodeComputer
 
 let programCode =
-    Helper.readUncommentedLines "day09.txt"
+    Helper.readLinesWithHashComments "day09.txt"
     |> Seq.item 0
     |> String.split ','
 
