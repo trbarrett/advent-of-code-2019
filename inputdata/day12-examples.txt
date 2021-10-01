@@ -1,0 +1,13 @@
+// Example 1
+let startingPositions =
+    [ { Id = 1; X = -1; Y =   0; Z =  2 }
+      { Id = 2; X =  2; Y = -10; Z = -7 }
+      { Id = 3; X =  4; Y =  -8; Z =  8 }
+      { Id = 4; X =  3; Y =   5; Z = -1 } ]
+
+// Example 2
+let startingPositions =
+    [ { Id = 1; X = -8; Y = -10; Z =  0 }
+      { Id = 2; X =  5; Y =   5; Z = 10 }
+      { Id = 3; X =  2; Y =  -7; Z =  3 }
+      { Id = 4; X =  9; Y =  -8; Z = -3 } ]

@@ -60,6 +60,13 @@ module List =
                permutations (Set.remove x values) (count - 1)
                |> List.map (fun xs -> x::xs))
 
+    let rec combinations n l =
+        match n, l with
+        | 0, _ -> [[]]
+        | _, [] -> []
+        | k, (x::xs) ->
+            List.map ((@) [x]) (combinations (k-1) xs) @ combinations k xs
+
 module Seq =
     let groupByTuple (xs : ('a * 'b) seq) =
         xs

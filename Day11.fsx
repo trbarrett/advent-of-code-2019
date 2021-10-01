@@ -1,6 +1,9 @@
 #load "./Helper.fsx"
 
 // Day 11 - Use an IntProgram to paint a spaceship
+//
+// Thoughts - A pretty straightforward problem, perhaps due to the way I coded
+//            I/O for the IntProgram
 
 open Helper
 open Helper
