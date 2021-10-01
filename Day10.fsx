@@ -1,7 +1,7 @@
 #load "./Helper.fsx"
 
-// Day 9 - Find asteroids visible from other asteroids, taking into account
-//         ones that are blocked by line of sight
+// Day 10 - Find asteroids visible from other asteroids, taking into account
+//          ones that are blocked by line of sight
 //
 // Method:
 //   Part1 -
