@@ -259,7 +259,6 @@ module IntCodeComputer =
 
 open IntCodeComputer
 
-
 type Turn = | Left90Deg | Right90Deg
 module Turn =
     let fromInt64 = function | 0L -> Left90Deg | 1L -> Right90Deg
@@ -268,14 +267,10 @@ type Facing = | Up | Right | Left | Down
 module Facing =
     let turn facing turn =
         match facing, turn with
-        | Up, Right90Deg -> Right
-        | Right, Right90Deg -> Down
-        | Down, Right90Deg -> Left
-        | Left, Right90Deg -> Up
-        | Up, Left90Deg -> Left
-        | Left, Left90Deg -> Down
-        | Down, Left90Deg -> Right
-        | Right, Left90Deg -> Up
+        | Up, Right90Deg -> Right  | Right, Right90Deg -> Down
+        | Down, Right90Deg -> Left | Left, Right90Deg -> Up
+        | Up, Left90Deg -> Left    | Left, Left90Deg -> Down
+        | Down, Left90Deg -> Right | Right, Left90Deg -> Up
 
     let stepForward (x,y) = function
         | Up ->    (x,     y - 1)

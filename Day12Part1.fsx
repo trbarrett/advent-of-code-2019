@@ -1,63 +1,56 @@
 #load "./Helper.fsx"
 
-// Day 12 - Calculate how orbitting moons affect each others positions and
+// Day 12 - Calculate how orbiting moons affect each others positions and
 //          velocity via gravity
+//
+// Part 1 : A bunch of basic calculations applied repeatedly, but pretty
+//          straight forwards. I've used a monid to make summing easier
 
 open Helper
-open System
 
 type Moon = { Id: int; X: int; Y: int; Z: int }
 
 type MoonVel =
     { Id: int; VX: int; VY: int; VZ: int }
-    static member Zero = { Id = 0; VX = 0; VY = 0; VZ = 0; }
-    static member ( + ) (x, y) =
-        if x.Id = 0 then y
-        elif y.Id = 0 then x
-        else
-            if x.Id <> y.Id then failwithf $"Can't add if ids differ: {x.Id} and {y.Id}"
-            { Id = x.Id
-              VX = x.VX + y.VX
-              VY = x.VY + y.VY
-              VZ = x.VZ + y.VZ }
 
-    static member kineticEnergy vel =
-        Math.Abs vel.VX + Math.Abs vel.VY + Math.Abs vel.VZ
+    static member Zero = { Id = 0; VX = 0; VY = 0; VZ = 0; }
+
+    static member ( + ) (x, y) =
+        if x.Id = 0 then y elif y.Id = 0 then x
+        else { Id = x.Id; VX = x.VX + y.VX; VY = x.VY + y.VY; VZ = x.VZ + y.VZ }
+
+    static member kineticEnergy vel = abs vel.VX + abs vel.VY + abs vel.VZ
 
     static member print vel =
         sprintf $"vel=<x={vel.VX,2}, y={vel.VY,2}, z={vel.VZ,2}>"
 
 module Moon =
-
     let updatePosition
         { Id = id; VX = dX; VY = dY; VZ = dZ }
         { Id = id; X = x; Y = y; Z = z }
         =
         { Id = id; X = x + dX; Y = y + dY; Z = z + dZ }
 
-    let print moon =
-        sprintf $"pos=<x={moon.X,2}, y={moon.Y,2}, z={moon.Z,2}>"
+    let print moon = sprintf $"pos=<x={moon.X,2}, y={moon.Y,2}, z={moon.Z,2}>"
 
-    let potentialEnergy moon =
-        Math.Abs moon.X + Math.Abs moon.Y + Math.Abs moon.Z
+    let potentialEnergy moon = abs moon.X + abs moon.Y + abs moon.Z
 
-module Moons =
-    let velocityChange
-        { Id = id1; X = x1; Y = y1; Z = z1 }
-        { Id = id2; X = x2; Y = y2; Z = z2 }
-        =
-        let gravChange a b = if a = b then 0 elif a > b then -1 else 1
-        let dX = gravChange x1 x2
-        let dY = gravChange y1 y2
-        let dZ = gravChange z1 z2
-        { Id = id1; VX = dX; VY = dY; VZ = dZ},
-        { Id = id2; VX = -dX; VY = -dY; VZ = -dZ}
+
+let gravityChange
+    { Id = id1; X = x1; Y = y1; Z = z1 }
+    { Id = id2; X = x2; Y = y2; Z = z2 }
+    =
+    let axisChange a b = if a = b then 0 elif a > b then -1 else 1
+    let dX = axisChange x1 x2
+    let dY = axisChange y1 y2
+    let dZ = axisChange z1 z2
+    { Id = id1; VX = dX; VY = dY; VZ = dZ}, { Id = id2; VX = -dX; VY = -dY; VZ = -dZ}
 
 let simulateMoonStep (moons, velocities) =
     let velocityChanges =
         moons
         |> List.combinations 2
-        |> List.map (fun [a; b] -> Moons.velocityChange a b)
+        |> List.map (fun [a; b] -> gravityChange a b)
         |> List.collect (fun (a,b) -> [a; b])
 
     let velocities =
