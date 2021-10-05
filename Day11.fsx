@@ -6,7 +6,6 @@
 //            I/O for the IntProgram
 
 open Helper
-open Helper
 open System
 open System.Collections.Generic
 

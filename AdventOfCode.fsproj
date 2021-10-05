@@ -7,6 +7,7 @@
 
     <ItemGroup>
         <None Include="Helper.fsx" />
+        <None Include="IntCodeComputer.fsx" />
         <None Include="Day01.fsx" />
         <None Include="Day02.fsx" />
         <None Include="Day03.fsx" />
@@ -20,6 +21,7 @@
         <None Include="Day11.fsx" />
         <None Include="Day12Part1.fsx" />
         <None Include="Day12Part2.fsx" />
+        <None Include="Day13.fsx" />
     </ItemGroup>
 
 </Project>
