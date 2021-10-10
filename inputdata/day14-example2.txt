@@ -1,0 +1,16 @@
+9 ORE => 2 A
+8 ORE => 3 B
+7 ORE => 5 C
+3 A, 4 B => 1 AB
+5 B, 7 C => 1 BC
+4 C, 1 A => 1 CA
+2 AB, 3 BC, 4 CA => 1 FUEL
+//
+// The above list of reactions requires 165 ORE to produce 1 FUEL:
+// - Consume 45 ORE to produce 10 A.
+// - Consume 64 ORE to produce 24 B.
+// - Consume 56 ORE to produce 40 C.
+// - Consume 6 A, 8 B to produce 2 AB.
+// - Consume 15 B, 21 C to produce 3 BC.
+// - Consume 16 C, 4 A to produce 4 CA.
+// - Consume 2 AB, 3 BC, 4 CA to produce 1 FUEL.

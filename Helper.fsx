@@ -77,3 +77,9 @@ module Seq =
 module String =
     let split (delimiter : char) (input : string) =
         input.Split delimiter
+
+    let splitStr (delimiter : string) (input : string) =
+        input.Split delimiter
+
+    let trim (input : string) =
+        input.Trim()

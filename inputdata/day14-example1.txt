@@ -1,0 +1,11 @@
+10 ORE => 10 A
+1 ORE => 1 B
+7 A, 1 B => 1 C
+7 A, 1 C => 1 D
+7 A, 1 D => 1 E
+7 A, 1 E => 1 FUEL
+//
+// To produce 1 FUEL, a total of 31 ORE is required:
+// - 1 ORE to produce 1 B, then 30 more ORE to produce the 7 + 7 + 7 + 7 = 28 A (with 2 extra A wasted)
+// required in the reactions to convert the B into C, C into D, D into E, and finally E into FUEL.
+// (30 A is produced because its reaction requires that it is created in increments of 10.)
