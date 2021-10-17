@@ -1,0 +1,5 @@
+12345678
+// iteration 1 = 48226158
+// iteration 2 = 34040438
+// iteration 3 = 03415518
+// iteration 4 = 01029498

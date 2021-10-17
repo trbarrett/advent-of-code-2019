@@ -83,3 +83,6 @@ module String =
 
     let trim (input : string) =
         input.Trim()
+
+module Char =
+    let digitToInt (c : char) = int c - int '0'
