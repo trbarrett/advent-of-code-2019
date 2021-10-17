@@ -86,3 +86,24 @@ module String =
 
 module Char =
     let digitToInt (c : char) = int c - int '0'
+
+let memoize f =
+    let dict = Dictionary<_,_>()
+    fun x ->
+        if dict.ContainsKey x then
+            dict.[x]
+        else
+            let value = f x
+            dict.Add(x, value)
+            value
+
+let memoize2 f =
+    let dict = Dictionary<_,_>()
+    fun a b ->
+        if dict.ContainsKey (a,b) then
+            dict.[(a,b)]
+        else
+            let value = f a b
+            dict.Add((a,b), value)
+            value
+
