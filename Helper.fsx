@@ -74,6 +74,10 @@ module Seq =
         |> Seq.map (fun (k,v) -> k, v |> Seq.map snd)
         |> Map
 
+    let toString (separator : string) (s : seq<'a>) =
+        System.String.Join(separator, s)
+
+
 module String =
     let split (delimiter : char) (input : string) =
         input.Split delimiter
@@ -86,6 +90,16 @@ module String =
 
 module Char =
     let digitToInt (c : char) = int c - int '0'
+
+module Math =
+    /// Takes a seq of int64 digits and converts them into a single number
+    /// based on position. e.g. [ 4L; 5L; 7L; 2L; 7L ] -> 45727L
+    let digitsToInt64 digits =
+        digits
+        |> Seq.rev
+        |> Seq.mapi (fun i x -> (int64 (pown 10 i)) * x )
+        |> Seq.sum
+
 
 let memoize f =
     let dict = Dictionary<_,_>()
